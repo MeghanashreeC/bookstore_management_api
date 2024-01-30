@@ -27,8 +27,10 @@ func init() {
 //the database when the application starts.
 
 // Creating all the functions I need to talk to the database
+
 // 1. Create
-func (b *Book) CreateBook() *Book { //Book is what we return of type Book
+func (b *Book) CreateBook() *Book { //This part declares the method receiver. It's saying that the method CreateBook is associated with a receiver of type *Book, which is a pointer to a Book.
+	// *Book: This part is the return type of the method. It indicates that the CreateBook method will return a pointer to a Book instance.
 	db.NewRecord(b) // This function is used to check if the record associated with the book (b) is new (i.e., hasn't been saved to the database).
 	db.Create(&b)   // This line creates a new record in the database. The &b passes a pointer to the Book struct to the Create function.
 	return b
@@ -42,9 +44,9 @@ func GetAllBooks() []Book { // I am using slice because I want to get a slice of
 	return Books
 }
 
-// 3. getting book by id
+// 3. Getting book by id
 
-func GetBookById(Id int64) (*Book, *gorm.DB) {
+func GetBookById(Id int64) (*Book, *gorm.DB) { // The *Book indicates that the function returns a pointer to a Book instance, and *gorm.DB indicates a pointer to a Gorm database object.
 	var getBook Book
 	db := db.Where("ID=?", Id).Find(&getBook)
 	return &getBook, db
