@@ -19,16 +19,9 @@ This API performs the following functionalities:
 6. PUT/book/book{id} - Updates a book with the respective ID
 7. DELETE/book/book{id} - Deletes the book with the respective ID
    
-## Struct Defined is
-> type Book struct {
-	gorm.Model         // The gorm.Model is embedded in this struct, which provides some common fields like ID, CreatedAt, UpdatedAt, and DeletedAt for managing records.
-	Name        string `json:"name"`
-	Author      string `json:"author"`
-	Publication string `json:"publication"`
-}
-
 ## How to run the application
 > go build .
+
 > go run main.go
 
 ## How to test the application
